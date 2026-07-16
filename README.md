@@ -168,6 +168,8 @@ The dashboard displays:
 
 **Iyswariya K**
 
-B.E. Electronics and Communication Engineering
+Electronics and Communication Engineering Graduate 
 
 Currently pursuing a Diploma in Embedded Systems
+
+Interested in Embedded Systems, Embedded C, IoT, and Firmware Development.
