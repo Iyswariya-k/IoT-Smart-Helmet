@@ -170,4 +170,4 @@ The dashboard displays:
 
 B.E. Electronics and Communication Engineering
 
-Embedded Systems Trainee
+Currently pursuing a Diploma in Embedded Systems
