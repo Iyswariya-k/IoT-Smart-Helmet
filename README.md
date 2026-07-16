@@ -2,14 +2,14 @@
 
 ## Overview
 
-The IoT Smart Helmet is an ESP32-based embedded system developed to enhance the safety of coal-mine workers. The system continuously monitors environmental conditions, worker health, GPS location, and fall detection, while transmitting real-time data to the Blynk IoT platform for remote monitoring and emergency alerts.
+The IoT Smart Helmet is an ESP32-based embedded system designed to improve coal-mine worker safety by continuously monitoring environmental conditions, worker health, GPS location, and fall detection. The system transmits real-time sensor data to the Blynk IoT platform for remote monitoring and emergency alerts.
 
 ---
 
 ## Objective
 
 - Enhance the safety of coal-mine workers through continuous monitoring.
-- Detect hazardous gases and abnormal environmental conditions.
+- Detect hazardous gas levels and abnormal environmental conditions.
 - Monitor worker health using heart rate and SpO₂ sensors.
 - Detect falls or injuries using an accelerometer.
 - Track the worker's real-time GPS location.
@@ -36,7 +36,7 @@ The IoT Smart Helmet is an ESP32-based embedded system developed to enhance the 
 - MQ135 Gas Sensor
 - DHT11 Temperature & Humidity Sensor
 - ADXL345 Accelerometer
-- MAX30100 Pulse Oximeter
+- MAX30100 Pulse Oximeter Sensor
 - NEO-6M GPS Module
 - Breadboard
 - Jumper Wires
@@ -66,37 +66,52 @@ The IoT Smart Helmet is an ESP32-based embedded system developed to enhance the 
 
 ## Working Principle
 
-The ESP32 continuously collects sensor data from the gas sensors, DHT11, MAX30100, ADXL345, and GPS module. Gas concentration, temperature, humidity, heart rate, SpO₂, and GPS location are monitored in real time. The ADXL345 detects sudden falls based on acceleration values. All sensor data is processed by the ESP32 and transmitted to the Blynk IoT platform. If a fall is detected, the system generates an emergency alert and updates the worker's status along with the GPS location.
+The ESP32 continuously collects data from the MQ2, MQ135, DHT11, ADXL345, MAX30100, and GPS modules. The controller processes the sensor values in real time to detect hazardous gases, monitor temperature and humidity, measure heart rate and SpO₂, detect falls, and track GPS location. The processed data is sent to the Blynk IoT platform for remote monitoring. If a fall is detected, the system immediately generates an emergency alert and updates the worker's status and GPS location.
 
 ---
 
 ## Block Diagram
 
-```
-          +----------------------+
-          |       ESP32          |
-          +----------------------+
-           |   |   |   |   |   |
-           |   |   |   |   |   |
-      MQ2  | MQ135 | DHT11 | ADXL345
-           |       |       |
-       MAX30100    GPS Module
-           |
-      Blynk IoT Cloud
-           |
-      Mobile Application
+```text
+                     +----------------------+
+                     |       ESP32          |
+                     +----------------------+
+        |          |          |         |         |         |
+        |          |          |         |         |         |
+     MQ2 Gas    MQ135 Gas   DHT11   ADXL345   MAX30100   GPS
+      Sensor      Sensor    Temp &  Fall       Heart      NEO-6M
+                            Humidity Detection  Rate &
+                                                  SpO₂
+                                  |
+                                  |
+                           Blynk IoT Cloud
+                                  |
+                                  |
+                          Mobile Application
 ```
 
 ---
 
 ## Circuit Diagram
 
-> **Add your circuit diagram image here.**
-
-Example:
-
-```
-Circuit_Diagram.png
+```text
+                    +------------------+
+                    |      ESP32       |
+                    +------------------+
+                     |  |  |  |  |  |
+                     |  |  |  |  |  +----------------------+
+                     |  |  |  |  |                         |
+                     |  |  |  |  |                     GPS Module
+                     |  |  |  |  |
+                     |  |  |  |  +------------ MAX30100
+                     |  |  |  |
+                     |  |  |  +--------------- ADXL345
+                     |  |  |
+                     |  |  +------------------ DHT11
+                     |  |
+                     |  +--------------------- MQ135
+                     |
+                     +------------------------ MQ2
 ```
 
 ---
@@ -111,10 +126,10 @@ The dashboard displays:
 - MQ135 Gas Level
 - Heart Rate
 - SpO₂
-- Fall Status
+- Fall Detection Status
 - GPS Latitude
 - GPS Longitude
-- Google Maps Location
+- Google Maps Location Link
 
 ---
 
@@ -140,12 +155,12 @@ The dashboard displays:
 
 ## Future Scope
 
-- GSM-based SMS alerts.
-- Battery monitoring system.
-- Helmet removal detection.
-- Cloud database integration.
-- Mobile application development.
-- AI-based health prediction and analytics.
+- GSM-based SMS alerts
+- Battery monitoring system
+- Helmet removal detection
+- Cloud database integration
+- Mobile application development
+- AI-based health prediction and analytics
 
 ---
 
